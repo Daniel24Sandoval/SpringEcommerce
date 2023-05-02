@@ -1,6 +1,20 @@
 package com.SpringEcommerce.model;
 
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="Usuarios")
 public class Usuario {
+	@Id
+	//para auto incrementar el id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 private int id;
 private String nombre;
 private String userme;
@@ -10,13 +24,17 @@ private String tipo;
 private String password;
 private String telefono;
 
-
+@OneToMany(mappedBy = "usuario")
+private List<Producto> productos;
+@OneToMany(mappedBy = "usuario")
+private List<orden> ordenes;
 public Usuario() {
 	
 }
 
+
 public Usuario(int id, String nombre, String userme, String email, String direccion, String tipo, String password,
-		String telefono) {
+		String telefono, List<Producto> productos) {
 	super();
 	this.id = id;
 	this.nombre = nombre;
@@ -26,7 +44,13 @@ public Usuario(int id, String nombre, String userme, String email, String direcc
 	this.tipo = tipo;
 	this.password = password;
 	this.telefono = telefono;
+	
+	
+	
+	this.productos = productos;
 }
+
+
 public int getId() {
 	return id;
 }
@@ -74,6 +98,21 @@ public String getTelefono() {
 }
 public void setTelefono(String telefono) {
 	this.telefono = telefono;
+}
+
+public List<Producto> getProductos() {
+	return productos;
+}
+
+public void setProductos(List<Producto> productos) {
+	this.productos = productos;
+}
+
+@Override
+public String toString() {
+	return "Usuario [id=" + id + ", nombre=" + nombre + ", userme=" + userme + ", email=" + email + ", direccion="
+			+ direccion + ", tipo=" + tipo + ", password=" + password + ", telefono=" + telefono + ", productos="
+			+ productos + "]";
 }
 
 }

@@ -1,11 +1,28 @@
 package com.SpringEcommerce.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "detalles")
 public class DetalleOrden {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 private int id;
 private String nombre;
 private double cantidad;
 private double precio;
 private double total;
+@OneToOne
+private orden orden;
+@ManyToOne
+private Producto producto;
+
 public DetalleOrden() {
 	
 }
@@ -46,6 +63,19 @@ public double getTotal() {
 }
 public void setTotal(double total) {
 	this.total = total;
+}
+
+public orden getOrden() {
+	return orden;
+}
+public void setOrden(orden orden) {
+	this.orden = orden;
+}
+public Producto getProducto() {
+	return producto;
+}
+public void setProducto(Producto producto) {
+	this.producto = producto;
 }
 @Override
 public String toString() {

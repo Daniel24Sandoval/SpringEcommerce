@@ -3,11 +3,26 @@ package com.SpringEcommerce.model;
 
 import java.sql.Date;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+@Entity
+@Table(name = "ordenes")
 public class orden {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 private int id;
 private String numero;
 private Date fechaCreacion;
 private Date fechaRecibida;
+@ManyToOne
+private Usuario usuario;
+@OneToOne(mappedBy = "orden")
+private DetalleOrden detalle;
 
 public orden() {
 	
@@ -51,6 +66,14 @@ public Date getFechaRecibida() {
 
 public void setFechaRecibida(Date fechaRecibida) {
 	this.fechaRecibida = fechaRecibida;
+}
+
+public Usuario getUsuario() {
+	return usuario;
+}
+
+public void setUsuario(Usuario usuario) {
+	this.usuario = usuario;
 }
 
 @Override
