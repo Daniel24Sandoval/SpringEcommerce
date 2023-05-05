@@ -1,5 +1,6 @@
 package com.SpringEcommerce.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,12 @@ public class Producto_Service_Implen implements Producto_Service{
 		// TODO Auto-generated method stub
 		producto_dao.deleteById(id);;
 		
+	}
+
+	@Override
+	public List<Producto> finAll() {
+		// TODO Auto-generated method stub
+		return producto_dao.findAll();
 	}
 
 	
