@@ -34,7 +34,7 @@ public Usuario() {
 
 
 public Usuario(int id, String nombre, String userme, String email, String direccion, String tipo, String password,
-		String telefono, List<Producto> productos) {
+		String telefono) {
 	super();
 	this.id = id;
 	this.nombre = nombre;
@@ -47,7 +47,7 @@ public Usuario(int id, String nombre, String userme, String email, String direcc
 	
 	
 	
-	this.productos = productos;
+	 
 }
 
 

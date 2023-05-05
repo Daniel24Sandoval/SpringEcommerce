@@ -13,7 +13,7 @@ public class Producto_Service_Implen implements Producto_Service{
 	private Producto_Dao producto_dao;
 	
 	@Override
-	public Producto seve(Producto producto) {
+	public Producto save(Producto producto) {
 		
 		
 		// TODO Auto-generated method stub
